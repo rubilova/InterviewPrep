@@ -1,0 +1,176 @@
+{
+  "page": 1,
+  "per_page": 8,
+  "total_pages": 3,
+  "next_page_url": "https://api.example.com/v1/restaurants?page=2",
+  "restaurants": [
+    {
+      "id": 101,
+      "name": "Sakura Ramen House",
+      "description": "Rich tonkotsu broth, hand-pulled noodles.",
+      "cuisines": ["Japanese", "Ramen"],
+      "rating": 4.7,
+      "review_count": 1284,
+      "price_level": 2,
+      "is_open": true,
+      "image_url": "https://picsum.photos/seed/sakura/600/400",
+      "delivery": { "fee": 2.99, "estimated_minutes": 25, "distance_miles": 1.4 },
+      "address": {
+        "street": "212 Mulberry St",
+        "city": "New York",
+        "state": "NY",
+        "zip_code": "10012",
+        "latitude": 40.7208,
+        "longitude": -73.9965
+      },
+      "promo": "Free dumplings over $30"
+    },
+    {
+      "id": 102,
+      "name": "Taqueria Los Amigos",
+      "description": "Street-style tacos and fresh salsas.",
+      "cuisines": ["Mexican"],
+      "rating": 4.5,
+      "review_count": 932,
+      "price_level": 1,
+      "is_open": true,
+      "image_url": "https://picsum.photos/seed/taqueria/600/400",
+      "delivery": { "fee": 0.0, "estimated_minutes": 18, "distance_miles": 0.8 },
+      "address": {
+        "street": "45 Bedford Ave",
+        "city": "Brooklyn",
+        "state": "NY",
+        "zip_code": "11211",
+        "latitude": 40.7173,
+        "longitude": -73.9566
+      },
+      "promo": null
+    },
+    {
+      "id": 103,
+      "name": "Nonna's Trattoria",
+      "description": "Family-recipe pasta and wood-fired pizza.",
+      "cuisines": ["Italian", "Pizza"],
+      "rating": 4.8,
+      "review_count": 2210,
+      "price_level": 3,
+      "is_open": false,
+      "image_url": "https://picsum.photos/seed/nonna/600/400",
+      "delivery": { "fee": 3.49, "estimated_minutes": 40, "distance_miles": 2.6 },
+      "address": {
+        "street": "9 Carmine St",
+        "city": "New York",
+        "state": "NY",
+        "zip_code": "10014",
+        "latitude": 40.7305,
+        "longitude": -74.0027
+      },
+      "promo": "20% off first order"
+    },
+    {
+      "id": 104,
+      "name": "Green Bowl",
+      "description": "Build-your-own salads and grain bowls.",
+      "cuisines": ["Healthy", "Salads", "Vegan"],
+      "rating": null,
+      "review_count": 0,
+      "price_level": 2,
+      "is_open": true,
+      "image_url": null,
+      "delivery": { "fee": 1.99, "estimated_minutes": 15, "distance_miles": 0.5 },
+      "address": {
+        "street": "300 W 23rd St",
+        "city": "New York",
+        "state": "NY",
+        "zip_code": "10011",
+        "latitude": 40.7443,
+        "longitude": -73.9996
+      },
+      "promo": null
+    },
+    {
+      "id": 105,
+      "name": "Spice Route",
+      "description": "Northern Indian curries and tandoori.",
+      "cuisines": ["Indian"],
+      "rating": 4.4,
+      "review_count": 640,
+      "price_level": 2,
+      "is_open": true,
+      "image_url": "https://picsum.photos/seed/spiceroute/600/400",
+      "delivery": { "fee": 2.49, "estimated_minutes": 30, "distance_miles": 1.9 },
+      "address": {
+        "street": "118 Lexington Ave",
+        "city": "New York",
+        "state": "NY",
+        "zip_code": "10016",
+        "latitude": 40.7425,
+        "longitude": -73.9821
+      },
+      "promo": "Free naan with any entree"
+    },
+    {
+      "id": 106,
+      "name": "Burger Barn",
+      "description": "Smash burgers, shakes and fries.",
+      "cuisines": ["American", "Burgers"],
+      "rating": 4.2,
+      "review_count": 3105,
+      "price_level": 1,
+      "is_open": true,
+      "image_url": "https://example.invalid/images/broken-link.jpg",
+      "delivery": { "fee": 0.99, "estimated_minutes": 22, "distance_miles": 1.1 },
+      "address": {
+        "street": "77 Court St",
+        "city": "Brooklyn",
+        "state": "NY",
+        "zip_code": "11201",
+        "latitude": 40.6937,
+        "longitude": -73.9908
+      },
+      "promo": null
+    },
+    {
+      "id": 107,
+      "name": "Bangkok Garden",
+      "description": "Pad thai, green curry and mango sticky rice.",
+      "cuisines": ["Thai"],
+      "rating": 4.6,
+      "review_count": 877,
+      "price_level": 2,
+      "is_open": true,
+      "image_url": "https://picsum.photos/seed/bangkok/600/400",
+      "delivery": { "fee": 2.99, "estimated_minutes": 28, "distance_miles": 1.7 },
+      "address": {
+        "street": "501 9th Ave",
+        "city": "New York",
+        "state": "NY",
+        "zip_code": "10018",
+        "latitude": 40.7557,
+        "longitude": -73.9936
+      },
+      "promo": null
+    },
+    {
+      "id": 108,
+      "name": "Sunrise Bakery",
+      "description": "Fresh bagels, pastries and coffee.",
+      "cuisines": ["Bakery", "Breakfast"],
+      "rating": 4.9,
+      "review_count": 415,
+      "price_level": 1,
+      "is_open": true,
+      "image_url": "https://picsum.photos/seed/sunrise/600/400",
+      "delivery": { "fee": 1.49, "estimated_minutes": 12, "distance_miles": 0.3 },
+      "address": {
+        "street": "28 Grand St",
+        "city": "New York",
+        "state": "NY",
+        "zip_code": "10013",
+        "latitude": 40.7226,
+        "longitude": -74.0036
+      },
+      "promo": "Buy 1 get 1 coffee"
+    }
+  ]
+}
