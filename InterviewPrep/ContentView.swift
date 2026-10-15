@@ -8,35 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var viewModel = RestaurantListViewModel()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, interview prep!")
-        }
-        .padding()
-        .task {
-            do {
-                let restaurants = try loadRestaurants()
-                print(restaurants.count, restaurants.first?.name ?? "none")
-            } catch {
-                print("Decoding failed:", error)
+            
+            Group {
+                switch viewModel.state {
+                    case .idle:
+                    Text("Hello, interview prep!")
+                    case .loading:
+                        ProgressView()
+                    case .loaded(let restaurants):
+                        List(restaurants) { restaurant in
+                        Text(restaurant.name)
+                        }
+                    case .error(let error):
+                    Text(error.localizedCapitalized)
+                    }
+                }
             }
+        .task {
+            await viewModel.loadData()
         }
-    }
-    
-    func loadRestaurants() throws -> [Restaurant] {
-        guard let url = Bundle.main.url(forResource: "restaurants", withExtension: "json") else {
-            throw URLError(.fileDoesNotExist)
-        }
-        let data = try Data(contentsOf: url)
-
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-        let response = try decoder.decode(RestaurantsResponse.self, from: data)
-        return response.restaurants
+        
+        
     }
 }
 
