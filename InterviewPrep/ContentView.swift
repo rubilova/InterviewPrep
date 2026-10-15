@@ -21,7 +21,11 @@ struct ContentView: View {
                         ProgressView()
                     case .loaded(let restaurants):
                         List(restaurants) { restaurant in
-                        Text(restaurant.name)
+                            HStack {
+                                Text(restaurant.ratingStringI())
+                                Text(restaurant.name)
+                            }
+                        
                         }
                     case .error(let error):
                     Text(error.localizedCapitalized)

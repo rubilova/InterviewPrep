@@ -20,6 +20,28 @@ struct Restaurant: Codable, Identifiable {
     let delivery: Delivery
     let address: Address
     let promo: String?
+    
+    func ratingString() -> String {
+        rating.map{"\($0)"} ?? "Not yet rated"
+    }
+    
+    func ratingStringI() -> String {
+        if let rating {
+            return String(format: "%.0f", rating)
+        }
+        else {
+            return "Not yet rated"
+        }
+        
+    }
+    
+    func ratingStringII() -> String {
+        guard let rating
+        else {
+            return "Not yet rated"
+        }
+        return String(format: "%.0f", rating)
+    }
 }
 
 struct Address: Codable {
