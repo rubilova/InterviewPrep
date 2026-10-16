@@ -43,4 +43,11 @@ final class RestaurantListViewModel {
         let response = try decoder.decode(RestaurantsResponse.self, from: data)
         return response.restaurants
     }
+    
+    /*
+     Collections: Write a function that takes [Restaurant] and returns the names of the restaurants that are open, sorted by rating from highest to lowest, with unrated ones last. Use filter, sorted and map.
+     */
+    func sortedList(_ restaurants: [Restaurant]) -> [Restaurant] {
+        return restaurants.sorted { ($0.rating ?? -1) > ($1.rating ?? -1) }
+    }
 }

@@ -20,7 +20,7 @@ struct ContentView: View {
                     case .loading:
                         ProgressView()
                     case .loaded(let restaurants):
-                        List(restaurants) { restaurant in
+                    List(viewModel.sortedList(restaurants)) { restaurant in
                             HStack {
                                 Text(restaurant.ratingStringI())
                                 Text(restaurant.name)
