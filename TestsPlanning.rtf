@@ -1,0 +1,144 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fmodern\fcharset0 Courier;\f2\froman\fcharset0 Times-Bold;
+\f3\fmodern\fcharset0 Courier-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Testing is worth practicing. Your strategy doc lists "What would you test?" as part of the architecture discussion, and the 
+\f1\fs26 InterviewPrepTests
+\f0\fs24  target Xcode created is already waiting for tests. Here are the tests by layer, starting with the cheapest to write.\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b \cf0 1. Model decoding (easiest, start here)
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The full 
+\f1\fs26 restaurants.json
+\f0\fs24  decodes, with 8 restaurants and the right 
+\f1\fs26 page
+\f0\fs24  and 
+\f1\fs26 totalPages
+\f0\fs24 .\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 A restaurant with 
+\f1\fs26 "rating": null
+\f0\fs24  decodes with 
+\f1\fs26 rating == nil
+\f0\fs24 .\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 A restaurant with 
+\f1\fs26 "image_url": null
+\f0\fs24  or a missing 
+\f1\fs26 promo
+\f0\fs24  decodes without throwing.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 A JSON snippet missing a required key, like 
+\f1\fs26 name
+\f0\fs24 , throws 
+\f1\fs26 DecodingError.keyNotFound
+\f0\fs24 . You can check this with 
+\f1\fs26 #expect(throws:)
+\f0\fs24 .\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Snake_case mapping works: 
+\f1\fs26 zip_code
+\f0\fs24  ends up in 
+\f1\fs26 address.zipCode
+\f0\fs24  and 
+\f1\fs26 image_url
+\f0\fs24  in 
+\f1\fs26 imageUrl
+\f0\fs24 . This would have caught the 
+\f1\fs26 imageURL
+\f0\fs24  naming trap from earlier.\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b \cf0 2. Pure logic
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Your recall exercises become tests: the rating string for a nil and a non-nil rating, the open-only filter, the sort order with nil ratings last, 
+\f1\fs26 PriceTier(level:)
+\f0\fs24  returning 
+\f1\fs26 nil
+\f0\fs24  for out-of-range values, and the grouping by cuisine.\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b \cf0 3. View model (the most valuable one for the interview)
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The initial state is 
+\f1\fs26 .idle
+\f0\fs24 .\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 After 
+\f1\fs26 loadData()
+\f0\fs24  succeeds, the state is 
+\f1\fs26 .loaded
+\f0\fs24  with the expected restaurants.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 When loading fails, the state is 
+\f1\fs26 .error
+\f0\fs24  with a message.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The state passes through 
+\f1\fs26 .loading
+\f0\fs24  before it finishes.\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 For those you need to make the view model testable. Right now 
+\f1\fs26 loadRestaurants()
+\f0\fs24  reads 
+\f1\fs26 Bundle.main
+\f0\fs24  directly, so you can't make it fail on demand. Put the loading behind a protocol, for example 
+\f1\fs26 protocol RestaurantService \{ func fetchRestaurants() async throws -> [Restaurant] \}
+\f0\fs24 . The view model takes one in its initializer. In tests you pass a mock that returns fixed data or throws. This is what to say when asked "how would you structure this so it's testable?", and it's the point of MVVM.\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b \cf0 4. Networking (later, once you use 
+\f3\fs26 URLSession
+\f2\fs24 )
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Mock 
+\f1\fs26 URLSession
+\f0\fs24  with a 
+\f1\fs26 URLProtocol
+\f0\fs24  subclass to return canned responses.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Cover a 200 response with valid JSON, a 404 or 500 status, invalid JSON, and no network.\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b \cf0 5. UI tests (low priority)
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls5\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The 
+\f1\fs26 InterviewPrepUITests
+\f0\fs24  target can launch the app and check that the list appears and a row opens the detail screen. They're slow and fragile, so for prep, know that they exist and why you'd write fewer of them.\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 Xcode now supports two frameworks. Swift Testing (
+\f1\fs26 import Testing
+\f0\fs24 , 
+\f1\fs26 @Test
+\f0\fs24 , 
+\f1\fs26 #expect
+\f0\fs24 ) is the newer one, and XCTest (
+\f1\fs26 XCTestCase
+\f0\fs24 , 
+\f1\fs26 XCTAssertEqual
+\f0\fs24 ) is the older one. Many existing codebases, including probably DoorDash's, still use XCTest, so write a few tests in both styles. In a practice drill, one or two tests per layer is plenty.\
+A good first exercise is the model decoding tests in item 1. Write them in the existing test target without help, and send them to me when you're done.\
+}
