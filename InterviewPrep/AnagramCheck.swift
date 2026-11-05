@@ -28,6 +28,21 @@ fileprivate func anagramCheck2(_ s: String, _ t: String) -> Bool {
     return arrayS == arrayT
 }
 
+fileprivate func anagramCheck3(_ s: String, _ t: String) -> Bool {
+    guard s.count == t.count else { return false }
+    var counts: [Character: Int] = [:]
+    for char in s {
+        counts[char, default: 0] += 1
+    }
+    for char in t {
+        counts[char, default: 0] -= 1
+    }
+    for count in counts.values {
+        if count != 0 { return false }
+    }
+    return true
+}
+
 fileprivate func isAnagram(_ s: String, _ t: String) -> Bool {
     guard s.count == t.count else { return false }
     return s.sorted() == t.sorted()
@@ -44,7 +59,7 @@ struct AnagramCheck: View {
     var body: some View {
         VStack {
             Text(verbatim: String(anagramCheck1("listen", "silent")))
-            Text(verbatim: String(anagramCheck2(s1, t1)))
+            Text(verbatim: String(anagramCheck3(s1, t1)))
         }
     }
 }
